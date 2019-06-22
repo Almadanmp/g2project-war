@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Scanner;
 
 @Service
-class HouseConfigurationUI {
+public class HouseConfigurationUI {
     @Autowired
     private HouseConfigurationController controller;
     @Autowired

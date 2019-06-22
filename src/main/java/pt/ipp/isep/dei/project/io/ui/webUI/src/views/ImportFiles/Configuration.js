@@ -3,6 +3,7 @@ import ImportGeographicAreas from "./importGA/ImportGA";
 import ImportAreaReadings from "./importAreaReadings/ImportGAReadings";
 import ImportHouse from "./importHouse/ImportHouse";
 import ImportHouseSensors from "./importHouseSensors/ImportHouseSensors";
+import ImportHouseReadings from "./importHouseReadings/ImportHouseReadings";
 
 class Configuration extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class Configuration extends Component {
         <ImportAreaReadings/>
         <ImportHouse/>
         <ImportHouseSensors/>
+        <ImportHouseReadings/>
       </>
     );
   }

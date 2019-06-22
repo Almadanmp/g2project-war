@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pt.ipp.isep.dei.project.controller.controllercli.HouseConfigurationController;
 import pt.ipp.isep.dei.project.controller.controllercli.ReaderController;
 import pt.ipp.isep.dei.project.io.ui.commandline.GASettingsUI;
+import pt.ipp.isep.dei.project.io.ui.commandline.HouseConfigurationUI;
 import pt.ipp.isep.dei.project.io.ui.utils.InputHelperUI;
 import pt.ipp.isep.dei.project.model.areatype.AreaTypeRepository;
 import pt.ipp.isep.dei.project.model.geographicarea.GeographicAreaRepository;
@@ -48,6 +49,8 @@ public class ImportFilesWebController {
     private HouseRepository houseRepository;
     @Autowired
     private HouseConfigurationController houseConfigurationController;
+    @Autowired
+    private HouseConfigurationUI houseConfigurationUI;
 
     /**
      * Method to import files with Geographic Area and Area Sensors
@@ -173,6 +176,34 @@ public class ImportFilesWebController {
             Files.delete(path);
         } catch (IOException ex) {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(SUCCESS +
+                filename + ".\n" + result, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    /**
+     * Method to import House Sensor Readings
+     *
+     * @param file file to import
+     * @return response: string with information regarding success or failure
+     */
+    @PostMapping("/importHouseReadings")
+    public ResponseEntity<Object> importHouseReadings(
+            @RequestPart("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return new ResponseEntity<>(EMPTY_FILE, HttpStatus.OK);
+        }
+
+        String result;
+        String filename;
+        try {
+            Path path = saveUploadedFiles(file);
+            String pathToFile = path.toString();
+            filename = file.getOriginalFilename();
+            result = houseConfigurationUI.selectImportHouseReadingsMethod(pathToFile);
+            Files.delete(path);
+        } catch (IOException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(SUCCESS +
                 filename + ".\n" + result, new HttpHeaders(), HttpStatus.OK);
