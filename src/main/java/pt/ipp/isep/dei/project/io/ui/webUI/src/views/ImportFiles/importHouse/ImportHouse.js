@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button, Card, CardBody, Collapse} from "reactstrap";
 import GADropzone from "./HouseDropzone";
+import {connect} from "react-redux";
 
 class ImportHouse extends Component {
   constructor(props) {
@@ -46,7 +47,17 @@ class ImportHouse extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    loading: state.ReducersImportHouse.loading,
+  }
+};
 
-export default ImportHouse;
+
+export default connect(
+  mapStateToProps,
+  null,
+)(ImportHouse);
+
 
 
