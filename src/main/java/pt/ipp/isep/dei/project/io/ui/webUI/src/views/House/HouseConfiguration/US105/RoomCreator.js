@@ -50,6 +50,7 @@ class RoomCreator extends React.Component {
         }
       ]
     });
+
   };
 
   render() {
@@ -87,13 +88,12 @@ class RoomCreator extends React.Component {
           details: {'Name: ' + name + ' | ' + 'Floor: ' + floor + ' | ' + 'Width: ' + width + ' | ' + 'Length: ' + length + ' | ' + 'Height: ' + height + '.'}</p>
         <p></p>
 
-        <Button style={{backgroundColor: '#e4e5e6', marginBottom: '1rem'}} onClick={(event) => {
-          this.submit();
-          this.toggleHidden()
-        }}>Save new room
-          configuration</Button>{this.state.isHidden === false ?
+        <Button style={{backgroundColor: '#e4e5e6', marginBottom: '1rem'}} onClick={
+          this.submit
+        }>Save new room
+          configuration</Button>{!this.state.isHidden &&
       <Message105 name={this.state.name} floor={this.state.floor} width={this.state.width} length={this.state.width}
-                  height={this.state.height}/>:''}
+                  height={this.state.height}/>}
       </>
     )
   }

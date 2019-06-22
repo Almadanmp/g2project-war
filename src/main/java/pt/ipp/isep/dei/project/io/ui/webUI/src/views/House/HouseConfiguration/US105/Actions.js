@@ -12,7 +12,7 @@ export const fetchRoom = ({name, floor, width, length, height}) => {
     dispatch(fetchRoomInfo(name, floor, width, length, height));
     const data = {name, floor, width, length, height};
     axios
-      .post('https://localhost:8443/houseSettings/room', data,
+      .post('https://localhost:8443/rooms/', data,
         {
           headers: {
             'Authorization': token,

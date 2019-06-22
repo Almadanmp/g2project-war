@@ -15,7 +15,7 @@ class US108Select extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem('loginToken');
-    fetch('https://localhost:8443/houseSettings/houseRooms', {
+    fetch('https://localhost:8443/rooms/', {
         headers: {
           'Authorization': token,
           "Access-Control-Allow-Credentials": true,
@@ -36,6 +36,7 @@ class US108Select extends Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    console.log(this.props.item.name)
   }
 
 
@@ -56,7 +57,7 @@ class US108Select extends Component {
           </div>
         );
       } else {
-        return "ERROR: Non-authorized user."
+        return item.error
       }
     }
   }
