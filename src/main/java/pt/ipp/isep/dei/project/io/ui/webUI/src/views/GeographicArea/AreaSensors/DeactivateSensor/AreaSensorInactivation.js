@@ -49,7 +49,7 @@ class AreaSensorInactivation extends React.Component {
     return (
       <>
 
-        <div className="switch-container">
+        <div className="switch-container" >
           <label>
             <input ref="switch" checked={this.state.isChecked } disabled={isEnabled} onChange={ this.submit } className="switch" type="checkbox" />
             <div>
@@ -71,4 +71,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-export default connect(null, mapDispatchToProps)(AreaSensorInactivation);
+export default connect(null, mapDispatchToProps)( AreaSensorInactivation);
