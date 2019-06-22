@@ -61,8 +61,7 @@ class US007Redux extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.toggle} style={{backgroundColor: '#FFFFFF', marginBottom: '1rem'}}>Add Geographic Area
-          into {this.props.id}</Button>
+        <Button onClick={this.toggle} className={"btn-pill"} style={{backgroundColor: '#93c4c4', marginBottom: '1rem'}}><i className="fa fa-plus-square-o fa-lg"/> Add Child Area{this.props.id}</Button>
         <Collapse isOpen={this.state.collapse}>
           <Card>
             <CardBody>
@@ -83,7 +82,7 @@ class US007Redux extends React.Component {
               <Button style={{backgroundColor: '#e4e5e6', marginBottom: '1rem'}} onClick={this.handleSubmit}>Save changes
               </Button>
               {(this.state.isHidden === false ?
-                <AlterMotherChild childId={this.state.id}/> : '')}
+                <AlterMotherChild childId={this.state.id} motherId={this.props.geographicAreaId}/> : '')}
             </CardBody>
           </Card>'
         </Collapse>

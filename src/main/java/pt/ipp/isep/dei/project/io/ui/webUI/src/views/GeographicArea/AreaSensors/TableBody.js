@@ -67,7 +67,7 @@ class TableBody extends Component {
             {/*<td>{item.active == true ? <Badge color="success"> Active </Badge> :*/}
               {/*<Badge color="danger"> Inactive </Badge>}</td>*/}
             <td style={{
-              textAlign: "right"}}><AreaSensorInactivation link={item.links.find((hrefs) => hrefs.rel === 'Deactivate this Sensor')} sensorId={item.name} active={item.active}/> </td>
+              textAlign: "left"}}><AreaSensorInactivation link={item.links.find((hrefs) => hrefs.rel === 'Deactivate this Sensor')} sensorId={item.name} active={item.active}/> </td>
             <td style={{
               textAlign: "center"}}><AreaSensorRemover link={item.links.find((hrefs) => hrefs.rel === 'Delete this Sensor')} sensorId={item.name} area={this.props.area}/></td>
           </tr>
